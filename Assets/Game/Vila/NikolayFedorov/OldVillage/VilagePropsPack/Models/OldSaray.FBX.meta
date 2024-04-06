@@ -1,0 +1,186 @@
+fileFormatVersion: 2
+guid: 1380854c2be81694db17e1da1173a1e7
+timeCreated: 1457679960
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Saray_Gorbil
+    100004: SarayBrus
+    100006: SarayBrusLOD0
+    100008: SarayBrusLOD01
+    100010: SarayBrusLOD02
+    100012: SarayDoski
+    100014: SarayDoskiLOD0
+    100016: SarayDoskiLOD01
+    100018: SarayDoskiLOD02
+    100020: SarayGorbilLOD0
+    100022: SarayGorbilLOD01
+    100024: SarayGorbilLOD02
+    100026: SarayMetallKrisha
+    100028: SarayMetallKrishaLOD0
+    100030: SarayMetallKrishaLOD01
+    100032: SarayMetallKrishaLOD02
+    100034: SarayObreshetka
+    100036: WrataLSaray
+    100038: WrataLSarayLOD0
+    100040: WrataLSarayLOD01
+    100042: WrataLSarayLOD2
+    100044: WrataRSaray
+    100046: WrataRSarayLOD0
+    100048: WrataRSarayLOD01
+    100050: WrataRSarayLOD2
+    400000: //RootNode
+    400002: Saray_Gorbil
+    400004: SarayBrus
+    400006: SarayBrusLOD0
+    400008: SarayBrusLOD01
+    400010: SarayBrusLOD02
+    400012: SarayDoski
+    400014: SarayDoskiLOD0
+    400016: SarayDoskiLOD01
+    400018: SarayDoskiLOD02
+    400020: SarayGorbilLOD0
+    400022: SarayGorbilLOD01
+    400024: SarayGorbilLOD02
+    400026: SarayMetallKrisha
+    400028: SarayMetallKrishaLOD0
+    400030: SarayMetallKrishaLOD01
+    400032: SarayMetallKrishaLOD02
+    400034: SarayObreshetka
+    400036: WrataLSaray
+    400038: WrataLSarayLOD0
+    400040: WrataLSarayLOD01
+    400042: WrataLSarayLOD2
+    400044: WrataRSaray
+    400046: WrataRSarayLOD0
+    400048: WrataRSarayLOD01
+    400050: WrataRSarayLOD2
+    2300000: SarayBrusLOD0
+    2300002: SarayBrusLOD01
+    2300004: SarayBrusLOD02
+    2300006: SarayDoskiLOD0
+    2300008: SarayDoskiLOD01
+    2300010: SarayDoskiLOD02
+    2300012: SarayGorbilLOD0
+    2300014: SarayGorbilLOD01
+    2300016: SarayGorbilLOD02
+    2300018: SarayMetallKrishaLOD0
+    2300020: SarayMetallKrishaLOD01
+    2300022: SarayMetallKrishaLOD02
+    2300024: SarayObreshetka
+    2300026: WrataLSarayLOD0
+    2300028: WrataLSarayLOD01
+    2300030: WrataLSarayLOD2
+    2300032: WrataRSarayLOD0
+    2300034: WrataRSarayLOD01
+    2300036: WrataRSarayLOD2
+    3300000: SarayBrusLOD0
+    3300002: SarayBrusLOD01
+    3300004: SarayBrusLOD02
+    3300006: SarayDoskiLOD0
+    3300008: SarayDoskiLOD01
+    3300010: SarayDoskiLOD02
+    3300012: SarayGorbilLOD0
+    3300014: SarayGorbilLOD01
+    3300016: SarayGorbilLOD02
+    3300018: SarayMetallKrishaLOD0
+    3300020: SarayMetallKrishaLOD01
+    3300022: SarayMetallKrishaLOD02
+    3300024: SarayObreshetka
+    3300026: WrataLSarayLOD0
+    3300028: WrataLSarayLOD01
+    3300030: WrataLSarayLOD2
+    3300032: WrataRSarayLOD0
+    3300034: WrataRSarayLOD01
+    3300036: WrataRSarayLOD2
+    4300000: SarayObreshetka
+    4300002: WrataLSarayLOD2
+    4300004: WrataLSarayLOD0
+    4300006: WrataLSarayLOD01
+    4300008: WrataRSarayLOD2
+    4300010: WrataRSarayLOD01
+    4300012: WrataRSarayLOD0
+    4300014: SarayMetallKrishaLOD01
+    4300016: SarayMetallKrishaLOD02
+    4300018: SarayMetallKrishaLOD0
+    4300020: SarayGorbilLOD01
+    4300022: SarayGorbilLOD02
+    4300024: SarayGorbilLOD0
+    4300026: SarayDoskiLOD01
+    4300028: SarayDoskiLOD02
+    4300030: SarayDoskiLOD0
+    4300032: SarayBrusLOD01
+    4300034: SarayBrusLOD02
+    4300036: SarayBrusLOD0
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

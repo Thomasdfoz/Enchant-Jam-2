@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: 079d723bb3450ac4da5461f512237243
+timeCreated: 1481301220
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Box01
+    100002: Box02
+    100004: Box04
+    100006: Box05
+    100008: Box06
+    100010: Box07
+    100012: Box08
+    100014: Box09
+    100016: Box10
+    100018: Box11
+    100020: ExteriorWood01
+    100022: ExteriorWood02
+    100024: Fundament
+    100026: Fundament Blocks
+    100028: Interior Wall
+    100030: KrishaMetall
+    100032: Line01
+    100034: MetallZavalinka
+    100036: Object01
+    100038: Object02
+    100040: //RootNode
+    100042: Plane01
+    100044: Sky01
+    100046: Window04
+    100048: Window05
+    100050: Window06
+    100052: Window07
+    100054: Window08
+    100056: Window09
+    100058: Window10
+    100060: Window11
+    100062: Window12
+    100064: Window13
+    100066: 'Brus '
+    100068: Door
+    100070: Dvernaya ramka
+    100072: Fronton
+    100074: Konek
+    100076: Krilzo
+    100078: Krisha jelezo
+    100080: MailBox
+    100082: Pechka
+    100084: Pol
+    100086: Room door
+    100088: VerandaDoski
+    100090: Windows
+    100092: Wrata
+    400000: Box01
+    400002: Box02
+    400004: Box04
+    400006: Box05
+    400008: Box06
+    400010: Box07
+    400012: Box08
+    400014: Box09
+    400016: Box10
+    400018: Box11
+    400020: ExteriorWood01
+    400022: ExteriorWood02
+    400024: Fundament
+    400026: Fundament Blocks
+    400028: Interior Wall
+    400030: KrishaMetall
+    400032: Line01
+    400034: MetallZavalinka
+    400036: Object01
+    400038: Object02
+    400040: //RootNode
+    400042: Plane01
+    400044: Sky01
+    400046: Window04
+    400048: Window05
+    400050: Window06
+    400052: Window07
+    400054: Window08
+    400056: Window09
+    400058: Window10
+    400060: Window11
+    400062: Window12
+    400064: Window13
+    400066: 'Brus '
+    400068: Door
+    400070: Dvernaya ramka
+    400072: Fronton
+    400074: Konek
+    400076: Krilzo
+    400078: Krisha jelezo
+    400080: MailBox
+    400082: Pechka
+    400084: Pol
+    400086: Room door
+    400088: VerandaDoski
+    400090: Windows
+    400092: Wrata
+    2300000: Box01
+    2300002: Box02
+    2300004: Box04
+    2300006: Box05
+    2300008: Box06
+    2300010: Box07
+    2300012: Box08
+    2300014: Box09
+    2300016: Box10
+    2300018: Box11
+    2300020: ExteriorWood01
+    2300022: ExteriorWood02
+    2300024: Fundament
+    2300026: Fundament Blocks
+    2300028: Interior Wall
+    2300030: KrishaMetall
+    2300032: Line01
+    2300034: MetallZavalinka
+    2300036: Object01
+    2300038: Object02
+    2300040: Plane01
+    2300042: Window04
+    2300044: Window05
+    2300046: Window06
+    2300048: Window07
+    2300050: Window08
+    2300052: Window09
+    2300054: Window10
+    2300056: Window11
+    2300058: Window12
+    2300060: Window13
+    2300062: 'Brus '
+    2300064: Door
+    2300066: Dvernaya ramka
+    2300068: Fronton
+    2300070: Konek
+    2300072: Krilzo
+    2300074: Krisha jelezo
+    2300076: MailBox
+    2300078: Pechka
+    2300080: Pol
+    2300082: Room door
+    2300084: VerandaDoski
+    2300086: Windows
+    2300088: Wrata
+    3300000: Box01
+    3300002: Box02
+    3300004: Box04
+    3300006: Box05
+    3300008: Box06
+    3300010: Box07
+    3300012: Box08
+    3300014: Box09
+    3300016: Box10
+    3300018: Box11
+    3300020: ExteriorWood01
+    3300022: ExteriorWood02
+    3300024: Fundament
+    3300026: Fundament Blocks
+    3300028: Interior Wall
+    3300030: KrishaMetall
+    3300032: Line01
+    3300034: MetallZavalinka
+    3300036: Object01
+    3300038: Object02
+    3300040: Plane01
+    3300042: Window04
+    3300044: Window05
+    3300046: Window06
+    3300048: Window07
+    3300050: Window08
+    3300052: Window09
+    3300054: Window10
+    3300056: Window11
+    3300058: Window12
+    3300060: Window13
+    3300062: 'Brus '
+    3300064: Door
+    3300066: Dvernaya ramka
+    3300068: Fronton
+    3300070: Konek
+    3300072: Krilzo
+    3300074: Krisha jelezo
+    3300076: MailBox
+    3300078: Pechka
+    3300080: Pol
+    3300082: Room door
+    3300084: VerandaDoski
+    3300086: Windows
+    3300088: Wrata
+    4300000: Fundament Blocks
+    4300002: ExteriorWood01
+    4300004: ExteriorWood02
+    4300006: Fundament
+    4300008: Window04
+    4300010: MetallZavalinka
+    4300012: Box05
+    4300014: Box02
+    4300016: Box04
+    4300018: Box01
+    4300020: Box07
+    4300022: Box08
+    4300024: Box09
+    4300026: Box10
+    4300028: Box11
+    4300030: Interior Wall
+    4300032: Object01
+    4300034: Window05
+    4300036: Window06
+    4300038: Window07
+    4300040: Window08
+    4300042: Window09
+    4300044: Window10
+    4300046: Window11
+    4300048: Window12
+    4300050: Window13
+    4300052: KrishaMetall
+    4300054: Box06
+    4300056: Line01
+    4300058: Object02
+    4300060: Plane01
+    4300062: Windows
+    4300064: Krilzo
+    4300066: VerandaDoski
+    4300068: Dvernaya ramka
+    4300070: 'Brus '
+    4300072: Pechka
+    4300074: Krisha jelezo
+    4300076: MailBox
+    4300078: Fronton
+    4300080: Konek
+    4300082: Room door
+    4300084: Pol
+    4300086: Door
+    4300088: Wrata
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
