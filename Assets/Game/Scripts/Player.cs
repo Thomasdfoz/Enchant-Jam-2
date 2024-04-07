@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
 namespace Horror.Player
@@ -10,7 +11,9 @@ namespace Horror.Player
     public class Player : MonoBehaviour
     {
         [Header("Public Variables")]
-        public int currentMagazineAmmunition;
+
+       
+        [HideInInspector] public bool die;
 
         [Header("Set Configs")]
         [SerializeField] private CinemachineVirtualCamera vCam3;
@@ -20,9 +23,18 @@ namespace Horror.Player
         [SerializeField] private LayerMask hitLayer;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] private float gravity = -1;
+        [SerializeField] private GameObject Lantern;
+
+        [Header("Set UI")]
+        [SerializeField] private Image batteryFill;
+        [SerializeField] private Image lifeFill;
+        [SerializeField] private Image currentMagazineAmmunitionFill;
+        [SerializeField] private Image currentAmmunitionFill;
 
         [Header("Player Stats")]
         [SerializeField] private int maxLife;
+        [Range(0, 10)]
+        [SerializeField] private int Initialbattery;
         [SerializeField] private int damagePistol;
         [SerializeField] private int damageKnife;
         [SerializeField] private int magazineAmmunition;
@@ -36,11 +48,11 @@ namespace Horror.Player
         [SerializeField] private float sensitivityMouseY = 5f;
         [SerializeField] private float fireSpeed = 0.5f;
         [SerializeField] private float reloadSpeed = 2.7f;
+      
 
         [Header("Player Parts")]
         [SerializeField] private GameObject[] partsDesativar;
 
-        [HideInInspector] public bool die;
 
         private Coroutine coroutineTakeDamage;
         private CinemachineComposer camComposer;
@@ -55,6 +67,30 @@ namespace Horror.Player
         private float currentGravity;
         private bool isReloadFinish;
         private bool isShotFinish;
+        private bool lanternOn = true;
+        private int currentMagazineAmmunition;
+        private float battery;
+        private bool key;
+
+        public float Battery
+        {
+            get => battery;
+
+            set
+            {
+                battery = value;
+
+                if (battery > 10)
+                {
+                    battery = 10;
+                }
+                else if (battery < 0)
+                {
+                    battery = 0;
+                }
+
+            }
+        }
 
         void Start()
         {
@@ -68,17 +104,37 @@ namespace Horror.Player
             currentGravity = gravity;
             isReloadFinish = true;
             isShotFinish = true;
+            Battery = Initialbattery;
 
         }
 
         void Update()
         {
             if (die) return;
-
+            OnOffLantern();
+            SetUI();
             GetDirectionAndMove();
             Gravity();
             SetRotation();
             SetAnimations();
+        }
+
+        private void SetUI()
+        {
+            if (lanternOn)
+            {
+                Battery -= (Time.deltaTime / 60);
+                batteryFill.fillAmount = Battery / 10;
+            }
+        }
+
+        private void OnOffLantern()
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                lanternOn = !lanternOn;
+                Lantern.SetActive(lanternOn);
+            }
         }
 
         public void TakeDamage(int Damage)
