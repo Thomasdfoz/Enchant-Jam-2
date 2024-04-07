@@ -7,17 +7,22 @@ namespace Horror.Player
 {
     public class Player : MonoBehaviour
     {
+        [Header("Public Variables")]
+        public int currentMagazineAmmunition;
+
         [Header("Set Configs")]
         [SerializeField] private CinemachineVirtualCamera vCam3;
         [SerializeField] private CinemachineVirtualCamera vCam1;
         [SerializeField] private CharacterController character;
+        [SerializeField] private Transform aimRectTransform;
+        [SerializeField] private LayerMask hitLayer;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] private float gravity = -1;
 
         [Header("Player Stats")]
         [SerializeField] private int maxLife;
         [SerializeField] private int magazineAmmunition;
-        [SerializeField] private int initAmmunition;
+        [SerializeField] private int ammunition;
         [SerializeField] private float moveSpeedFoward;
         [SerializeField] private float moveSpeedBack;
         [SerializeField] private float moveSpeedSides;
@@ -25,9 +30,8 @@ namespace Horror.Player
         [SerializeField] private Vector2 mouseYSensitivity;
         [SerializeField] private float sensitivityMouseX = 500f;
         [SerializeField] private float sensitivityMouseY = 5f;
-
-
-
+        [SerializeField] private float fireSpeed = 0.5f;
+        [SerializeField] private float reloadSpeed = 2.7f;
 
         [Header("Player Parts")]
         [SerializeField] private GameObject[] partsDesativar;
@@ -42,7 +46,9 @@ namespace Horror.Player
         private Vector3 velocity;
         private bool value;
         private bool isFirstCam;
-        float currentGravity;
+        private float currentGravity;
+        private bool isReloadFinish;
+        private bool isShotFinish;
 
         void Start()
         {
@@ -50,8 +56,12 @@ namespace Horror.Player
             animator = transform.GetChild(0).GetComponent<Animator>();
             Cursor.lockState = CursorLockMode.Locked;
             camComposer = vCam3.GetCinemachineComponent<CinemachineComposer>();
+            currentMagazineAmmunition = Mathf.Clamp(ammunition, 0, magazineAmmunition);
+            ammunition -= currentMagazineAmmunition;
             currentLife = maxLife;
             currentGravity = gravity;
+            isReloadFinish = true;
+            isShotFinish = true;
 
         }
 
@@ -107,11 +117,64 @@ namespace Horror.Player
                 partsDesativar[i].gameObject.SetActive(value);
             }
         }
+        private void Reload()
+        {
+            //todo fazer barulo de sem bala
+            if (ammunition <= 0) return;
+            if (!isReloadFinish || !isShotFinish) return;
+
+            isReloadFinish = false;
+            animator.SetTrigger("reload");
+            currentMagazineAmmunition = Mathf.Clamp(ammunition, 0, magazineAmmunition);
+            ammunition -= currentMagazineAmmunition;
+            Invoke(nameof(ReloadFinish), reloadSpeed);
+        }
+
+        private void ReloadFinish()
+        {
+            isReloadFinish = true;
+        }
+
 
         private void FireShot()
         {
+            if (!isReloadFinish || !isShotFinish) return;
 
+
+            if (currentMagazineAmmunition <= 0)
+            {
+                Reload();
+            }
+            else
+            {
+                isShotFinish = false;
+                currentMagazineAmmunition--;
+                animator.SetTrigger("shoot");
+
+                Vector2 imageScreenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, aimRectTransform.position);
+
+                Ray ray = Camera.main.ScreenPointToRay(imageScreenPosition);
+
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, hitLayer))
+                {
+                    Debug.Log("Raycast hit object: " + hit.collider.gameObject.name);
+
+                    Vector3 hitPoint = hit.point;
+                    Debug.Log("Hit point in world space: " + hitPoint);
+
+                }
+
+                Invoke(nameof(ShotFinish), fireSpeed);
+            }
         }
+
+        private void ShotFinish()
+        {
+            isShotFinish = true;
+        }
+
+
         private void SetAnimations()
         {
 
@@ -120,12 +183,12 @@ namespace Horror.Player
 
             if (Input.GetMouseButtonDown(0))
             {
-                animator.SetTrigger("shoot");
+                FireShot();
             }
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                animator.SetTrigger("reload");
+                Reload();
             }
 
         }
@@ -171,7 +234,7 @@ namespace Horror.Player
         private void Gravity()
         {
             if (!IsGround()) velocity.y += currentGravity * Time.deltaTime;
-            else if(velocity.y < 0) 
+            else if (velocity.y < 0)
             {
                 currentGravity = gravity;
                 velocity.y = -2;
@@ -193,7 +256,7 @@ namespace Horror.Player
             if (other.CompareTag("FirstCam"))
             {
                 if (isFirstCam) return;
-                
+
                 ChangeCam(true);
             }
         }
