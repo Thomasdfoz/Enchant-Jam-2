@@ -21,6 +21,8 @@ namespace Horror.Player
 
         [Header("Player Stats")]
         [SerializeField] private int maxLife;
+        [SerializeField] private int damagePistol;
+        [SerializeField] private int damageKnife;
         [SerializeField] private int magazineAmmunition;
         [SerializeField] private int ammunition;
         [SerializeField] private float moveSpeedFoward;
@@ -77,6 +79,7 @@ namespace Horror.Player
 
         public void TakeDamage(int Damage)
         {
+            Debug.Log("LEvei damage " + Damage);
             currentLife -= Damage;
 
             if (currentLife < 0)
@@ -161,6 +164,10 @@ namespace Horror.Player
                     Debug.Log("Raycast hit object: " + hit.collider.gameObject.name);
 
                     Vector3 hitPoint = hit.point;
+
+                    Enemy enemy = hit.collider.gameObject.GetComponent<Enemy>();
+
+                    enemy.TakeDamage(damagePistol);
                     Debug.Log("Hit point in world space: " + hitPoint);
 
                 }
