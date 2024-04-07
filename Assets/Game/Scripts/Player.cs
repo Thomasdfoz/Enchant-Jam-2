@@ -1,4 +1,6 @@
 using Cinemachine;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
@@ -38,11 +40,13 @@ namespace Horror.Player
         [Header("Player Parts")]
         [SerializeField] private GameObject[] partsDesativar;
 
+        [HideInInspector] public bool die;
+
+        private Coroutine coroutineTakeDamage;
         private CinemachineComposer camComposer;
         private Animator animator;
         private float hzInput, vInput;
-        private int currentLife;
-        private bool die;
+        [SerializeField] private int currentLife;
         private Vector3 dir;
         private Vector3 spherePos;
         private Vector3 velocity;
@@ -79,15 +83,27 @@ namespace Horror.Player
 
         public void TakeDamage(int Damage)
         {
-            Debug.Log("LEvei damage " + Damage);
             currentLife -= Damage;
-
-            if (currentLife < 0)
+            if (coroutineTakeDamage == null)
             {
-                die = true;
+                coroutineTakeDamage = StartCoroutine(TakeDamage());
+            }
+        }
+
+        public IEnumerator TakeDamage()
+        {
+            if (currentLife <= 0)
+            {
                 currentLife = 0;
+                die = true;
+                animator.SetTrigger("die");
+                GetComponent<Collider>().enabled = false;
+                yield break;
             }
 
+            animator.SetTrigger("takeDamage");
+            yield return new WaitForSeconds(0.2f);
+            coroutineTakeDamage = null;
         }
 
         #region Private Methods
