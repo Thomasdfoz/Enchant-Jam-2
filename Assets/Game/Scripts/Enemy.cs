@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     private bool follow;
     public State state;
 
-    private int currentPatrolPoints;
+    public int currentPatrolPoints;
     private bool inPatrol;
 
     private Transform target;
@@ -48,13 +48,10 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (player.IsPaused) return;
+
         if (die) return;
         SetAnimations();
-    }
-
-    private void LookAt()
-    {
-        transform.root.LookAt(target.position);
     }
 
     private void SetAnimations()
@@ -79,8 +76,8 @@ public class Enemy : MonoBehaviour
             target = patrolPoints[currentPatrolPoints];
             agent.SetDestination(target.position);
             inPatrol = true;
+            return;
         }
-        
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {            
@@ -102,6 +99,8 @@ public class Enemy : MonoBehaviour
     }
     private void FollowPlayer()
     {
+        
+
         if (!inAttack)
         {
             target = player.transform;
@@ -109,7 +108,8 @@ public class Enemy : MonoBehaviour
             agent.SetDestination(target.position);
         }
 
-        if (agent.remainingDistance == 0) return;
+        float distance = Vector3.Distance(target.position, transform.position);
+
         if (agent.remainingDistance <= 5)
         {
             agent.speed = Mathf.Clamp(speed / 3f, 1, 10);
@@ -118,7 +118,8 @@ public class Enemy : MonoBehaviour
         {
             agent.speed = speed;
         }
-        if (agent.remainingDistance <= agent.stoppingDistance)
+
+        if (distance <= agent.stoppingDistance)
         {
             agent.isStopped = true;
             animator.SetBool("walk", false);

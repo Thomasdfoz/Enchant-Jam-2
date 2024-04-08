@@ -1,18 +1,15 @@
 using Cinemachine;
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace Horror.Player
 {
     public class Player : MonoBehaviour
     {
         [Header("Public Variables")]
-
-       
         [HideInInspector] public bool die;
 
         [Header("Set Configs")]
@@ -20,10 +17,12 @@ namespace Horror.Player
         [SerializeField] private CinemachineVirtualCamera vCam1;
         [SerializeField] private CharacterController character;
         [SerializeField] private Transform aimRectTransform;
+        [SerializeField] private Transform firstAimRectTransform;
         [SerializeField] private LayerMask hitLayer;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] private float gravity = -1;
-        [SerializeField] private GameObject Lantern;
+        [SerializeField] private Light Lantern;
+        [SerializeField] private TextMeshProUGUI textAmmunition;
 
         [Header("Set UI")]
         [SerializeField] private Image batteryFill;
@@ -48,7 +47,7 @@ namespace Horror.Player
         [SerializeField] private float sensitivityMouseY = 5f;
         [SerializeField] private float fireSpeed = 0.5f;
         [SerializeField] private float reloadSpeed = 2.7f;
-      
+
 
         [Header("Player Parts")]
         [SerializeField] private GameObject[] partsDesativar;
@@ -58,7 +57,7 @@ namespace Horror.Player
         private CinemachineComposer camComposer;
         private Animator animator;
         private float hzInput, vInput;
-        [SerializeField] private int currentLife;
+        [SerializeField] private float currentLife;
         private Vector3 dir;
         private Vector3 spherePos;
         private Vector3 velocity;
@@ -70,7 +69,13 @@ namespace Horror.Player
         private bool lanternOn = true;
         private int currentMagazineAmmunition;
         private float battery;
+
+
         private bool key;
+        public InteractiveScript OBJ { get; set; }
+
+
+        private bool isPaused;
 
         public float Battery
         {
@@ -92,6 +97,8 @@ namespace Horror.Player
             }
         }
 
+        public bool IsPaused { get => isPaused; set => isPaused = value; }
+
         void Start()
         {
             character = GetComponent<CharacterController>();
@@ -110,21 +117,62 @@ namespace Horror.Player
 
         void Update()
         {
+            if (IsPaused) return;
+
             if (die) return;
-            OnOffLantern();
             SetUI();
+            OnOffLantern();
             GetDirectionAndMove();
             Gravity();
             SetRotation();
             SetAnimations();
+            GetObj();
+
+        }
+
+        private void GetObj()
+        {
+            if (OBJ != null)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (OBJ.NameObj == "key")
+                    {
+                        key = true;
+                        Destroy(OBJ.gameObject);
+                    }
+
+                    if (OBJ.NameObj == "battery")
+                    {
+                        Battery += 10;
+                        Destroy(OBJ.gameObject);
+                    }
+
+                    if (OBJ.NameObj == "door")
+                    {
+                        OBJ.OpenDoor();
+                    }
+
+                }
+            }
         }
 
         private void SetUI()
         {
+            textAmmunition.text = $"{currentMagazineAmmunition}/{ammunition}";
             if (lanternOn)
             {
                 Battery -= (Time.deltaTime / 60);
                 batteryFill.fillAmount = Battery / 10;
+
+                if (Battery < 1)
+                {
+                    Lantern.intensity = Battery;
+                }
+                else
+                {
+                    Lantern.intensity = 1;
+                }
             }
         }
 
@@ -133,7 +181,7 @@ namespace Horror.Player
             if (Input.GetKeyDown(KeyCode.F))
             {
                 lanternOn = !lanternOn;
-                Lantern.SetActive(lanternOn);
+                Lantern.gameObject.SetActive(lanternOn);
             }
         }
 
@@ -148,6 +196,8 @@ namespace Horror.Player
 
         public IEnumerator TakeDamage()
         {
+            lifeFill.fillAmount = (currentLife / maxLife);
+
             if (currentLife <= 0)
             {
                 currentLife = 0;
@@ -169,6 +219,9 @@ namespace Horror.Player
 
             if (firstCam)
             {
+
+                aimRectTransform.gameObject.SetActive(false);
+                firstAimRectTransform.gameObject.SetActive(true);
                 vCam3.gameObject.SetActive(false);
                 vCam1.gameObject.SetActive(true);
 
@@ -177,6 +230,8 @@ namespace Horror.Player
             }
             else
             {
+                firstAimRectTransform.gameObject.SetActive(false);
+                aimRectTransform.gameObject.SetActive(true);
                 vCam3.gameObject.SetActive(true);
                 vCam1.gameObject.SetActive(false);
                 value = true;
@@ -226,7 +281,9 @@ namespace Horror.Player
                 currentMagazineAmmunition--;
                 animator.SetTrigger("shoot");
 
-                Vector2 imageScreenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, aimRectTransform.position);
+                Vector3 targetAim = isFirstCam ? firstAimRectTransform.position : aimRectTransform.position;
+
+                Vector2 imageScreenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, targetAim);
 
                 Ray ray = Camera.main.ScreenPointToRay(imageScreenPosition);
 
